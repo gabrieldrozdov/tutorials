@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>editor!</title>
+
+	<link rel="stylesheet" href="editor.css">
+
+	<!-- CodeMirror -->
+	<link rel="stylesheet" href="cm/lib/codemirror.css">
+	<script src="cm/lib/codemirror.js"></script>
+	<script src="cm/mode/htmlmixed/htmlmixed.js"></script>
+	<script src="cm/mode/xml/xml.js"></script>
+	<script src="cm/mode/css/css.js"></script>
+	<script src="cm/mode/javascript/javascript.js"></script>
+
+	<!-- CodeMirror addons -->
+	<link rel="stylesheet" href="cm/addon/hint/show-hint.css">
+	<script src="cm/addon/hint/show-hint.js"></script>
+	<script src="cm/addon/hint/anyword-hint.js"></script>
+	<script src="cm/addon/hint/xml-hint.js"></script>
+	<script src="cm/addon/hint/html-hint.js"></script>
+	<script src="cm/addon/hint/css-hint.js"></script>
+	<script src="cm/addon/hint/javascript-hint.js"></script>
+	<script src="cm/addon/edit/closetag.js"></script>
+	<script src="cm/addon/edit/closebrackets.js"></script>
+	<script src="cm/addon/selection/active-line.js"></script>
+	<script src="cm/addon/edit/matchbrackets.js"></script>
+	<script src="cm/addon/comment/comment.js"></script>
+	<script src="cm/addon/comment/continuecomment.js"></script>
+</head>
+<body>
+	<main class="editor">
+		<nav class="demos-navbar">
+			<h1 class="editor-navbar-title"><span class="editor-navbar-title-fade">Now editing:</span> <span class="editor-navbar-title-file">test-project-1.html</span></h1>
+
+			<div class="editor-navbar-spacer"></div>
+
+			<div onclick="prevDemo()" class="editor-navbar-btn"><span class="symbol">&#xe5c4;</span> <span class="editor-navbar-btn-text">Previous Demo</span></div>
+			<div onclick="nextDemo()" class="editor-navbar-btn"><span class="editor-navbar-btn-text">Next Demo</span> <span class="symbol">&#xe5c8;</span></div>
+			<a href="../" class="editor-navbar-btn"><span class="symbol">&#xe88a;</span> <span class="editor-navbar-btn-text">Home</span></a>
+		</nav>
+
+		<div class="editor-shortcuts" data-active="0" onclick="editorShortcuts();">
+			<div class="editor-shortcut">
+				<div class="editor-shortcut-keys">
+					<span class="symbol">&#xeae7;</span>
+					<span>+</span>
+					<span style="transform: translateY(-.1em);">]</span>
+					<span class="editor-shortcut-or">or</span>
+					<span class="symbol">&#xeae6;</span>
+					<span>+</span>
+					<span style="transform: translateY(-.1em);">]</span>
+				</div>
+				<div class="editor-shortcut-action">
+					Indent selection right
+				</div>
+			</div>
+			<div class="editor-shortcut">
+				<div class="editor-shortcut-keys">
+					<span class="symbol">&#xeae7;</span>
+					<span>+</span>
+					<span style="transform: translateY(-.1em);">[</span>
+					<span class="editor-shortcut-or">or</span>
+					<span class="symbol">&#xeae6;</span>
+					<span>+</span>
+					<span style="transform: translateY(-.1em);">[</span>
+				</div>
+				<div class="editor-shortcut-action">
+					Indent selection left
+				</div>
+			</div>
+			<div class="editor-shortcut">
+				<div class="editor-shortcut-keys">
+					<span class="symbol">&#xeae7;</span>
+					<span>+</span>
+					<span style="transform: translateY(-.05em);">/</span>
+				</div>
+				<div class="editor-shortcut-action">
+					Comment/uncomment selection
+				</div>
+			</div>
+			<div class="editor-shortcut">
+				<div class="editor-shortcut-keys">
+					<span class="symbol">&#xeae6;</span>
+					<span>+</span>
+					<span>space</span>
+				</div>
+				<div class="editor-shortcut-action">
+					Show suggestions (autocomplete)
+				</div>
+			</div>
+			<div class="editor-shortcuts-close">
+				<p><span class="symbol">&#xe5cd;</span> Click anywhere to close</p>
+			</div>
+		</div>
+
+		<div class="editor-content">
+			<div class="editor-code">
+				<div class="editor-cm"></div>
+				<div class="editor-controls">
+					<button onclick="editorToggleWrapping();" style="--primary: var(--pink);"><span class="symbol">&#xf828;</span> <span class="editor-controls-label">Wrap Text</span></button>
+					<button onclick="editorFontsizeDown();" style="--primary: var(--green);"><span class="symbol">&#xeadd;</span> <span class="editor-controls-label">Decrease Text Size</span></button>
+					<button onclick="editorFontsizeUp();" style="--primary: var(--blue);"><span class="symbol">&#xeae2;</span> <span class="editor-controls-label">Increase Text Size</span></button>
+				</div>
+				<div class="editor-controls">
+					<button onclick="editorReset();" style="--primary: var(--yellow);"><span class="symbol">&#xf053;</span> <span class="editor-controls-label">Reset Changes</span></button>
+					<button onclick="editorDownload();" style="--primary: var(--purple);"><span class="symbol">&#xf090;</span> <span class="editor-controls-label">Download Code</span></button>
+					<button onclick="editorShortcuts();" style="--primary: var(--red);"><span class="symbol">&#xeae7;</span> <span class="editor-controls-label">Shortcuts</span></button>
+				</div>
+			</div>
+
+			<div class="editor-preview">
+				<iframe class="editor-iframe"></iframe>
+			</div>
+		</div>
+	</main>
+
+	<script src="editor.js"></script>
+</body>
+</html>
