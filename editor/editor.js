@@ -1,7 +1,17 @@
 let demos = [
 	"template.html",
-	"alert.html",
-	"tracking-clicks.html"
+	"lesson1.html",
+	"lesson2.html",
+	"lesson2a.html",
+	"lesson3.html",
+	"exercisea.html",
+	"lesson4.html",
+	"lesson5.html",
+	"exerciseb.html",
+	"lesson6.html",
+	"exercisec.html",
+	"lesson7.html",
+	"exercised.html",
 ]
 
 // Generate editor
@@ -26,7 +36,7 @@ function generateEditor() {
 			'Cmd-/': 'toggleComment',
 			'Ctrl-/': 'toggleComment',
 		},
-		lineWrapping: true,
+		lineWrapping: false,
 		theme: "gdwithgd",
 	});
 	cm.on("change", updatePreview);
@@ -52,6 +62,8 @@ function fetchDemo(src) {
 	activeDemo = src;
 	const editorTitle = document.querySelector('.editor-navbar-title-file');
 	editorTitle.innerText = src;
+	const editorNewTab = document.querySelector('.editor-navbar-info');
+	editorNewTab.href = "../demos/"+src;
 	fetch("../demos/"+src)
 		.then((response) => response.text())
 		.then(code => {
@@ -66,7 +78,7 @@ function updatePreview() {
 }
 
 // Editor controls
-let lineWrap = true;
+let lineWrap = false;
 function editorToggleWrapping() {
 	lineWrap = !lineWrap;
 	cm.setOption('lineWrapping', lineWrap);
