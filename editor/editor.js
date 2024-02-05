@@ -1,5 +1,6 @@
 let demos = [
 	"template.html",
+
 	"lesson1.html",
 	"lesson2.html",
 	"lesson2a.html",
@@ -12,6 +13,39 @@ let demos = [
 	"exercisec.html",
 	"lesson7.html",
 	"exercised.html",
+
+	"reusing-functions.html",
+	"this-argument.html",
+
+	"array-in-order.html",
+	"array-random.html",
+	"tracking-information.html",
+	"css-random-numbers.html",
+	"random-decisions.html",
+	"changing-classes.html",
+
+	"changing-text.html",
+	"combining-text.html",
+	"changing-images.html",
+	"playing-audio.html",
+	"editing-html.html",
+
+	"setinterval.html",
+	"settimeout.html",
+	"stopping-a-loop.html",
+	"multiple-elements.html",
+	"random-elements1.html",
+	"random-elements2.html",
+
+	"dragging-elements.html",
+	"endlesshorse.html",
+	"yellow3d.html",
+
+	"portfolio-nav.html",
+	"portfolio-header.html",
+	"portfolio-grid.html",
+	"portfolio-footer.html",
+	"portfolio-homepage.html",
 ]
 
 // Generate editor
